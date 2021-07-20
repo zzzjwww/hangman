@@ -1,0 +1,15 @@
+html {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#game {
+    text-align: center;
+}
+
+#blank {
+    font-size: 3rem;
+}
+.input {
+    margin-top: 20px;
+}
