@@ -1,4 +1,4 @@
-const words = ["cat", "cmt", "cst", "ict", "cot", "cit", "coort"];
+const words = ["cat", "cmt", "cst", "ichts", "coit", "cit", "coort"];
 let guessRound = 0;
 let endGame = false;
 let currentWord = words[Math.floor(Math.random() * words.length)];
@@ -8,11 +8,9 @@ let currentInput = document.querySelector(".input input");
 const wordPut = document.querySelector(".word-display");
 
 
-
 //make the blankfield to show
 function fillBlank(word) {
     blankToFill.textContent = "_ ".repeat(word.length);
-
 }
 function fillWithChar(key) {
     const contentArray = Array.from(blankToFill.textContent).filter(ele => ele !== " ");
@@ -31,19 +29,18 @@ function checkKeyMatch() {
     if (currentKey !== "" && endGame == false) {
         if (currentWord.includes(currentKey)) {
             fillWithChar(currentKey);
-            currentInput.textContent = "";
         } else {
             //add hangman here
             console.log("false");
         }
+        currentInput.value = "";
         guessRound++;
         wordPut.textContent = guessRound;
     }
     if (guessRound > currentWord.length) {
         endGame = true;
+        wordPut.textContent = "You are done💩";
     };
-
-
 }
 
 
