@@ -18,7 +18,7 @@ function fillWithChar(key) {
     const contentArray = Array.from(blankToFill.textContent).filter(ele => ele !== " ");
     console.log(contentArray);
     for (let i = 0; i < currentWord.length; i++) {
-        if (currentWord[i] === key) {
+        if (currentWord[i] === key && key != "") {
             contentArray[i] = key;
         }
     }
@@ -28,18 +28,21 @@ function fillWithChar(key) {
 //check key
 function checkKeyMatch() {
     let currentKey = currentInput.value;
-    if (currentWord.includes(currentKey)) {
-        fillWithChar(currentKey);
-        currentInput.value = "";
-    } else {
-        console.log("false");
+    if (currentKey !== "" && endGame == false) {
+        if (currentWord.includes(currentKey)) {
+            fillWithChar(currentKey);
+            currentInput.textContent = "";
+        } else {
+            //add hangman here
+            console.log("false");
+        }
+        guessRound++;
+        wordPut.textContent = guessRound;
     }
-    guessRound++;
-    wordPut.textContent = guessRound;
-
     if (guessRound > currentWord.length) {
         endGame = true;
     };
+
 
 }
 
@@ -50,11 +53,7 @@ function checkKeyMatch() {
 check if if matches currentword*/
 function renderGame() {
     fillBlank(currentWord);
-    if (!endGame){
     currentInput.addEventListener("keyup", checkKeyMatch);
-    }else {
-        wordPut.textContent = "You lost";
-    }
 }
 
 
